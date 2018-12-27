@@ -1,2 +1,2 @@
-# go-reac
+# go-react
 go-react test
