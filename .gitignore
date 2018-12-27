@@ -1,6 +1,6 @@
 configurations/app.yaml
 glide.lock
-env/*
+env/App.yaml
 vendor
 go-react
 .idea/*

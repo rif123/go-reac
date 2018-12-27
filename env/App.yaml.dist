@@ -1,0 +1,10 @@
+#app config
+app:
+  port: ""
+
+#Config For JWT
+JWT:
+  AUTH0_API_CLIENT_SECRET: ""
+  AUTH0_CLIENT_ID: ""
+  AUTH0_DOMAIN: ""
+  AUTH0_API_AUDIENCE: ""
