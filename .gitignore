@@ -4,3 +4,6 @@ env/App.yaml
 vendor
 go-react
 .idea/*
+views/node_modules/*
+views/package-lock.json
+views/dist/build.js

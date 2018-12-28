@@ -32,11 +32,9 @@ func SetConfig() {
 // GetDefaultConfigPath location
 func GetDefaultConfigPath() string {
 	_, filename, _, ok := runtime.Caller(0)
-
 	if ok == false {
 		log.Fatal("err")
 	}
-
 	filePath := path.Join(path.Dir(filename), "../env/")
 
 	return filePath

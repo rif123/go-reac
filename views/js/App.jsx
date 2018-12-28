@@ -4,7 +4,6 @@ const AUTH0_CALLBACK_URL = location.href;
 const AUTH0_API_AUDIENCE = "https://rifky.auth0.com/api/v2/";
 
 
-
 class App extends React.Component {
     parseHash() {
         this.auth0 = new auth0.WebAuth({
@@ -63,23 +62,13 @@ class App extends React.Component {
     }
 
     render() {
+
         if (this.loggedIn) {
             return <LoggedIn />;
         }
         return <Home />;
     }
 }
-
-
-// class App extends React.Component {
-//     render() {
-//         if (this.loggedIn) {
-//             return (<LoggedIn />);
-//         } else {
-//             return (<Home />);
-//         }
-//     }
-// }
 
 class Home extends React.Component {
     constructor(props) {
@@ -139,11 +128,17 @@ class LoggedIn extends React.Component {
     }
 
     serverRequest() {
-        $.get("http://localhost:3000/api/jokes", res => {
-            this.setState({
-                jokes: res
-            });
-        });
+        $.ajax({
+            url: "http://localhost:3000/api/jokes",
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+                this.setState({jokes: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error("url failed", status, err.toString());
+            }.bind(this)
+        })
     }
 
     componentDidMount() {
@@ -155,8 +150,8 @@ class LoggedIn extends React.Component {
             <div className="container">
                 <br />
                 <span className="pull-right">
-          <a onClick={this.logout}>Log out</a>
-        </span>
+                    <a onClick={this.logout}>Log out</a>
+                </span>
                 <h2>Jokeish</h2>
                 <p>Let's feed you with some funny Jokes!!!</p>
                 <div className="row">
